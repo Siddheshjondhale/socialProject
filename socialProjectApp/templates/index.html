@@ -298,15 +298,19 @@
     <!-- Display prediction result here -->
    <!-- Display prediction result here -->
 <div class="prediction-result" class="half" style="font-size: 24px;">
-    The Prediction is that the account
-    <a href="https://www.instagram.com/{{ username }}" target="_blank">
-        @{{ username }}
-    </a>
+   
     {% if prediction is not None %}
         {% if prediction == 0 %}
+         The Prediction is that the account
+    <a href="https://www.instagram.com/{{ username }}" target="_blank" >
+        @{{ username }} is
+    </a>
             <p>Genuine</p>
         {% else %}
-            <p>Fake</p>
+             The Prediction is that the account
+    <a href="https://www.instagram.com/{{ username }}" target="_blank">
+        @{{ username }} 
+    </a> is
         {% endif %}
         <p>Followers: {{ followers }}</p>
         <p>Following: {{ following }}</p>
