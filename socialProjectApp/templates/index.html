@@ -302,15 +302,16 @@
     {% if prediction is not None %}
         {% if prediction == 0 %}
          The Prediction is that the account
-    <a href="https://www.instagram.com/{{ username }}" target="_blank" >
-        @{{ username }} is
-    </a>
-            <p>Genuine</p>
-        {% else %}
-             The Prediction is that the account
-    <a href="https://www.instagram.com/{{ username }}" target="_blank">
+    <a href="https://www.instagram.com/{{ username }}" target="_blank" style="color:blue;">
         @{{ username }} 
     </a> is
+          <b>  <p>Genuine</p> </b>
+        {% else %}
+             The Prediction is that the account
+    <a href="https://www.instagram.com/{{ username }}" target="_blank" style="color:red;">
+        @{{ username }} 
+    </a> is
+    <b><p>Fake</p></b>
         {% endif %}
         <p>Followers: {{ followers }}</p>
         <p>Following: {{ following }}</p>
