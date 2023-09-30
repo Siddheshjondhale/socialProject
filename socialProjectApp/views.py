@@ -28,6 +28,7 @@ def predict_fake_account(request):
     prediction = None
     followers_count = None
     following_count = None
+    accounturl = None  # Initialize accounturl variable
 
     if request.method == 'POST':
         form = ProfileSearchForm(request.POST)
@@ -44,6 +45,7 @@ def predict_fake_account(request):
                 user_input = [[posts_on_website, followers_count]]
 
                 prediction = clf.predict(user_input)[0]
+                accounturl = username  # Set accounturl to username
 
             except Exception as e:
                 return HttpResponse(f'An error occurred: {str(e)}')
@@ -51,4 +53,4 @@ def predict_fake_account(request):
     else:
         form = ProfileSearchForm()
 
-    return render(request, 'index.html', {'form': form, 'prediction': prediction, 'followers': followers_count, 'following': following_count})
+    return render(request, 'index.html', {'form': form, 'prediction': prediction, 'followers': followers_count, 'following': following_count, 'username': accounturl})
