@@ -16,6 +16,55 @@
     />
 
     <style>
+
+/* styles.css */
+
+.centered-input {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center horizontally */
+    display: block; /* Make it a block element */
+    {% comment %} margin-top: 20vh; /* Center vertically using viewport height (adjust as needed) */ {% endcomment %}
+    padding: 10px; /* Add some padding for spacing */
+    font-size: 16px; /* Set the font size */
+    border: 1px solid #ccc; /* Add a border for a professional look */
+    border-radius: 10px; /* Round the corners */
+    color: #333; /* Text color */
+    outline:none;
+}
+
+  /* CSS for the button container */
+    .input-button-container {
+            display: flex;
+            align-items: center;
+        }
+
+        /* CSS for the text input */
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            color: #333; /* Dark text color */
+            outline: none;
+        }
+
+        /* CSS for the button */
+        .search-button {
+            background: #333; /* Dark background for the button */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background: #555; /* Darker background on hover */
+        }
+
+        
       /* Custom CSS for the classy search box */
       .searchboxdiv {
         display: flex;
@@ -90,6 +139,38 @@
       .navbar-nav .nav-link:hover {
         color: #ff6a00 !important; /* Change link color on hover */
       }
+
+             /* CSS for the button container */
+        .input-button-container {
+            display: flex;
+            align-items: center;
+        }
+
+        /* CSS for the text input */
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            color: #333; /* Dark text color */
+            outline: none;
+        }
+
+        /* CSS for the button */
+        .search-button {
+            background: #333; /* Dark background for the button */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background: #555; /* Darker background on hover */
+        }
     </style>
   </head>
   <body>
@@ -129,10 +210,19 @@
       </div>
     </nav>
 
-    <form method="post" action="{% url 'predict_fake_account' %}">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Submit</button>
-    </form>
+    <!-- Form with Django integration -->
+    <div class="searchboxdiv">
+        <form method="post" action="{% url 'predict_fake_account' %}" class="search-box">
+            {% csrf_token %}
+            {{ form.text_input.label_tag }}
+            {{ form.text_input }}
+            <button type="submit" class="search-button">Submit</button>
+        </form>
+    </div>
+
+    <br/><br/><br/>
+
+    <br/><br/><br/>
   <section class="bg-white border-b py-8">
       <div class="container max-w-5xl mx-auto m-8">
         <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
