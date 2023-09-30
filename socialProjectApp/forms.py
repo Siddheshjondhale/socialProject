@@ -1,8 +1,8 @@
 from django import forms
 
 class ProfileSearchForm(forms.Form):
-    url = forms.URLField(
-        label='Enter Profile URL',
-        widget=forms.URLInput(attrs={'placeholder': 'https://www.example.com/user_profile'}),
+    text_input = forms.CharField(
+        label='Enter Text',
+        widget=forms.TextInput(attrs={'placeholder': 'Enter text here','id':'username'}),
         required=True
     )

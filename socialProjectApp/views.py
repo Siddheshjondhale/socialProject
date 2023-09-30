@@ -28,8 +28,8 @@ def predict_fake_account(request):
     if request.method == 'POST':
         form = ProfileSearchForm(request.POST)
         if form.is_valid():
-            # username = form.cleaned_data['username']
-            username='9ytx87rtc'
+            username = form.cleaned_data['text_input']
+            # username='dsd'
             try:
                 # Initialize Instaloader
                 ig = instaloader.Instaloader()
