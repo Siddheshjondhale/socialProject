@@ -82,7 +82,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
+        min-height: 70vh;
         margin: 0;
         background-color: #f0f0f0;
       }
@@ -250,9 +250,28 @@
             {{ form.text_input }}
             <button type="submit" class="search-button">Submit</button>
         </form>
-    </div>
+
+
+       
+</div>
+
+      
+   <!-- Display prediction result here -->
+<div id="prediction-result">
+    {% if prediction is not None %}
+        {% if prediction == 0 %}
+            <p>Prediction: Not Fake</p>
+        {% else %}
+            <p>Prediction: Fake</p>
+        {% endif %}
+        <p>Followers: {{ followers }}</p>
+        <p>Following: {{ following }}</p>
+    {% endif %}
+</div>
 
     <br/>   
+<!-- Display prediction result here -->
+
 
     <br/><br/><br/>
   <section class="bg-white border-b py-8">
