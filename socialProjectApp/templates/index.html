@@ -129,12 +129,10 @@
       </div>
     </nav>
 
-    <div class="searchboxdiv">
-      <form method="post">
-        {% csrf_token %} {{ form }}
-        <button type="submit" class="search-button fw-bolder">Search</button>
-      </form>
-    </div>
+    <form method="post" action="{% url 'predict_fake_account' %}">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
 
     <!-- Your scripts and other content goes here -->
 

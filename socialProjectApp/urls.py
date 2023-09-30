@@ -2,8 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-#     blogs
-    path('',views.search_profile),
-    
-   
+    path('', views.predict_fake_account, name='predict_fake_account'),
 ]
