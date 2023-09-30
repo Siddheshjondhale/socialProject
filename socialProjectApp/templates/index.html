@@ -206,10 +206,12 @@
       /* Dark text color */
       outline: none;
     }
-.half{
-  width: 50%;
-  display: flex;
-}
+
+    .half {
+      width: 50%;
+      display: flex;
+    }
+
     /* CSS for the button */
     .search-button {
       background: #333;
@@ -294,14 +296,12 @@
     </div>
 
     <!-- Display prediction result here -->
-    <div class="prediction-result" class="half"
-    style="font-size: 24px;"
-    >
+    <div class="prediction-result" class="half" style="font-size: 24px;">The Prediction is that the account
       {% if prediction is not None %}
       {% if prediction == 0 %}
-      <p>Prediction: Not Fake</p>
+      <p>Genuine</p>
       {% else %}
-      <p>Prediction: Fake</p>
+      <p>Fake</p>
       {% endif %}
       <p>Followers: {{ followers }}</p>
       <p>Following: {{ following }}</p>
