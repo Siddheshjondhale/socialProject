@@ -1,394 +1,454 @@
-
-
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>SocialAuth</title>
-    {% comment %} boostrap 4 {% endcomment %}
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
-    <style>
 
-/* styles.css */
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>SocialAuth</title>
+  {% comment %} boostrap 4 {% endcomment %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+  <style>
+    /* styles.css */
 
-.centered-input {
-    width: 90%; /* Adjust the width as needed */
-    margin: 0 auto; /* Center horizontally */
-    display: block; /* Make it a block element */
-    {% comment %} margin-top: 20vh; /* Center vertically using viewport height (adjust as needed) */ {% endcomment %}
-    padding: 10px; /* Add some padding for spacing */
-    font-size: 16px; /* Set the font size */
-    border: 1px solid #ccc; /* Add a border for a professional look */
-    border-radius: 10px; /* Round the corners */
-    color: #333; /* Text color */
-    outline:none;
-}
+    .centered-input {
+      width: 90%;
+      /* Adjust the width as needed */
+      margin: 0 auto;
+      /* Center horizontally */
+      display: block;
 
-  /* CSS for the button container */
+      /* Make it a block element */
+        {
+        % comment %
+      }
+
+      margin-top: 20vh;
+
+      /* Center vertically using viewport height (adjust as needed) */
+        {
+        % endcomment %
+      }
+
+      padding: 10px;
+      /* Add some padding for spacing */
+      font-size: 16px;
+      /* Set the font size */
+      border: 1px solid #ccc;
+      /* Add a border for a professional look */
+      border-radius: 10px;
+      /* Round the corners */
+      color: #333;
+      /* Text color */
+      outline:none;
+    }
+
+    /* CSS for the button container */
     .input-button-container {
-            display: flex;
-            align-items: center;
-        }
+      display: flex;
+      align-items: center;
+    }
 
-        /* CSS for the text input */
-        .search-input {
-            flex: 1;
-            padding: 15px; /* Increase padding for size */
-            border: none;
-            background: transparent;
-            font-size: 18px; /* Increase font size */
-            color: #333; /* Dark text color */
-            outline: none;
-            font-weight: bold; /* Make the entered text bold */
-        }
-
-
-        /* CSS for the button */
-        .search-button {
-            background: #333; /* Dark background for the button */
-            color: #fff; /* White text color */
-            border: none;
-            border-radius: 30px;
-            padding: 15px 30px; /* Increase padding for size */
-            margin-left: 10px;
-            cursor: pointer;
-            font-size: 18px; /* Increase font size */
-            font-weight: bold; /* Make the text bold */
-        }
-/* CSS for the submit button */
-        .search-button:hover {
-            background: #555; /* Darker background on hover */
-            transform: scale(1.1); /* Add a scaling effect on hover */
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Add smooth transition */
-        }
+    /* CSS for the text input */
+    .search-input {
+      flex: 1;
+      padding: 15px;
+      /* Increase padding for size */
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      /* Increase font size */
+      color: #333;
+      /* Dark text color */
+      outline: none;
+      font-weight: bold;
+      /* Make the entered text bold */
+    }
 
 
-        
-      /* Custom CSS for the classy search box */
-      .searchboxdiv {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 70vh;
-        margin: 0;
-        background-color: #f0f0f0;
+    /* CSS for the button */
+    .search-button {
+      background: #333;
+      /* Dark background for the button */
+      color: #fff;
+      /* White text color */
+      border: none;
+      border-radius: 30px;
+      padding: 15px 30px;
+      /* Increase padding for size */
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      /* Increase font size */
+      font-weight: bold;
+      /* Make the text bold */
+    }
+
+    /* CSS for the submit button */
+    .search-button:hover {
+      background: #555;
+      /* Darker background on hover */
+      transform: scale(1.1);
+      /* Add a scaling effect on hover */
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      /* Add smooth transition */
+    }
+
+
+
+    /* Custom CSS for the classy search box */
+    .searchboxdiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .search-box {
+      width: 80%;
+      /* Adjust the width as needed */
+      max-width: 700px;
+      /* Limit the maximum width */
+      padding: 20px;
+      background: #f8f9fa;
+      /* Light gray background */
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      color: #333;
+      /* Dark text color */
+      outline: none;
+    }
+
+    .search-button {
+      background: #333;
+      /* Dark background for the button */
+      color: #fff;
+      /* White text color */
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .search-button:hover {
+      background: #555;
+      /* Darker background on hover */
+    }
+
+    /* Custom CSS for the navbar */
+    .navbar {
+      background-color: #333;
+      /* Dark background color for the navbar */
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+      /* White text color for the logo */
+      font-weight: bold;
+      font-size: 24px;
+      /* Increase the font size */
+      /* You can add additional styling to make the logo attractive */
+    }
+
+    .navbar-brand:hover {
+      color: #ff6a00 !important;
+      /* Change color on hover */
+    }
+
+    /* Other navbar styling */
+    .navbar-toggler-icon {
+      background-color: #fff;
+      /* White color for the toggle icon */
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      /* White text color for navigation links */
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ff6a00 !important;
+      /* Change link color on hover */
+    }
+
+    /* CSS for the button container */
+    .input-button-container {
+      display: flex;
+      align-items: center;
+    }
+
+    /* CSS for the text input */
+    .search-input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      color: #333;
+      /* Dark text color */
+      outline: none;
+    }
+.half{
+  width: 50%;
+  display: flex;
+}
+    /* CSS for the button */
+    .search-button {
+      background: #333;
+      /* Dark background for the button */
+      color: #fff;
+      /* White text color */
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .search-button:hover {
+      background: #555;
+      /* Darker background on hover */
+    }
+
+    .popping-text {
+      margin-left: 25px;
+      font-size: 20px;
+      animation: pop 0.5s ease-in-out infinite;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1);
       }
 
-      .search-box {
-        width: 80%; /* Adjust the width as needed */
-        max-width: 700px; /* Limit the maximum width */
-        padding: 20px;
-        background: #f8f9fa; /* Light gray background */
-        border: none;
-        border-radius: 30px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
+      50% {
+        transform: scale(1.1);
       }
 
-      .search-input {
-        flex: 1;
-        padding: 10px;
-        border: none;
-        background: transparent;
-        font-size: 18px;
-        color: #333; /* Dark text color */
-        outline: none;
+      100% {
+        transform: scale(1);
       }
+    }
+  </style>
+</head>
 
-      .search-button {
-        background: #333; /* Dark background for the button */
-        color: #fff; /* White text color */
-        border: none;
-        border-radius: 30px;
-        padding: 10px 20px;
-        margin-left: 10px;
-        cursor: pointer;
-      }
-
-      .search-button:hover {
-        background: #555; /* Darker background on hover */
-      }
-
-      /* Custom CSS for the navbar */
-      .navbar {
-        background-color: #333; /* Dark background color for the navbar */
-      }
-
-      .navbar-brand {
-        color: #fff !important; /* White text color for the logo */
-        font-weight: bold;
-        font-size: 24px; /* Increase the font size */
-        /* You can add additional styling to make the logo attractive */
-      }
-
-      .navbar-brand:hover {
-        color: #ff6a00 !important; /* Change color on hover */
-      }
-
-      /* Other navbar styling */
-      .navbar-toggler-icon {
-        background-color: #fff; /* White color for the toggle icon */
-      }
-
-      .navbar-nav .nav-link {
-        color: #fff !important; /* White text color for navigation links */
-      }
-
-      .navbar-nav .nav-link:hover {
-        color: #ff6a00 !important; /* Change link color on hover */
-      }
-
-             /* CSS for the button container */
-        .input-button-container {
-            display: flex;
-            align-items: center;
-        }
-
-        /* CSS for the text input */
-        .search-input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: transparent;
-            font-size: 18px;
-            color: #333; /* Dark text color */
-            outline: none;
-        }
-
-        /* CSS for the button */
-        .search-button {
-            background: #333; /* Dark background for the button */
-            color: #fff; /* White text color */
-            border: none;
-            border-radius: 30px;
-            padding: 10px 20px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .search-button:hover {
-            background: #555; /* Darker background on hover */
-        }
-        .popping-text {
-          margin-left:25px;
-          font-size: 20px;
-          animation: pop 0.5s ease-in-out infinite;
-      }
-      
-      @keyframes pop {
-          0% {
-              transform: scale(1);
-          }
-          50% {
-              transform: scale(1.1);
-          }
-          100% {
-              transform: scale(1);
-          }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Sticky Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-      <div class="container">
-        <a class="navbar-brand" href="#"
-          >Social<span style="color: #ff6a00">Auth</span></a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link btn btn-danger popping-text" href="tel:1930">Helpline:1930</a>
-            </li>
-          </ul>
-        </div>
+<body>
+  <!-- Sticky Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Social<span style="color: #ff6a00">Auth</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-danger popping-text" href="tel:1930">Helpline:1930</a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-   <!-- Form with Django integration -->
-<div class="searchboxdiv">
-    <form method="post" action="{% url 'predict_fake_account' %}" class="search-box">
+  <!-- Form with Django integration -->
+  <div class="searchboxdiv">
+    <div class="half">
+
+      <form method="post" action="{% url 'predict_fake_account' %}" class="search-box">
         {% csrf_token %}
         {{ form.text_input.label_tag }}
         {{ form.text_input }}
         <button type="submit" class="search-button">Submit</button>
-    </form>
+      </form>
+    </div>
 
     <!-- Display prediction result here -->
-    <div id="prediction-result">
-        {% if prediction is not None %}
-            {% if prediction == 0 %}
-                <p>Prediction: Not Fake</p>
-            {% else %}
-                <p>Prediction: Fake</p>
-            {% endif %}
-            <p>Followers: {{ followers }}</p>
-            <p>Following: {{ following }}</p>
-        {% endif %}
+    <div class="prediction-result" class="half"
+    style="font-size: 24px;"
+    >
+      {% if prediction is not None %}
+      {% if prediction == 0 %}
+      <p>Prediction: Not Fake</p>
+      {% else %}
+      <p>Prediction: Fake</p>
+      {% endif %}
+      <p>Followers: {{ followers }}</p>
+      <p>Following: {{ following }}</p>
+      {% endif %}
     </div>
-</div>
+  </div>
 
-    <br/>   
-<!-- Display prediction result here -->
+  <br />
+  <!-- Display prediction result here -->
 
 
-    <br/><br/><br/>
+  <br /><br /><br />
   <section class="bg-white border-b py-8">
-      <div class="container max-w-5xl mx-auto m-8">
-        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          Why SocialAuth?
-        </h2>
-        <div class="w-full mb-4">
-          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+    <div class="container max-w-5xl mx-auto m-8">
+      <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        Why SocialAuth?
+      </h2>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+      <div class="flex flex-wrap">
+        <div class="w-5/6 sm:w-1/2 p-6">
+          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+            Protecting Your Privacy:
+          </h3>
+          <p class="text-gray-600 mb-4 text-xl">
+            How Our Website is Helping to imposters
+          <p class="text text-red-600 text-xl">In the online world, we all use social networks. It's important to find
+            fake profiles because they can invade your privacy. These impostors might steal your information, pretend to
+            be you, or even hurt others.</p>
+          </p>
         </div>
-        <div class="flex flex-wrap">
-          <div class="w-5/6 sm:w-1/2 p-6">
+        <div class="w-full sm:w-1/2 p-6">
+          <img class="w-full sm:h-64 mx-auto rounded-xl md:w-1/2" src="{%static 'images/privacy.png'%}" alt=""
+            srcset="">
+        </div>
+      </div>
+      <div class="flex flex-wrap flex-col-reverse sm:flex-row">
+        <div class="w-full sm:w-1/2 p-6 mt-6">
+          <div class="w-full sm:w-1/2 p-6">
+            <img class="w-full sm:h-64 md:mx-12 rounded-xl md:w-full" src="{%static 'images/safety.png'%}" alt=""
+              srcset="">
+          </div>
+        </div>
+        <div class="w-full sm:w-1/2 p-6 mt-6">
+          <div class="align-middle">
             <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-              Protecting Your Privacy:
+              Ensuring Online Safety:
             </h3>
-            <p class="text-gray-600 mb-4 text-xl">
-              How Our Website is Helping to imposters
-            <p class="text text-red-600 text-xl">In the online world, we all use social networks. It's important to find fake profiles because they can invade your privacy. These impostors might steal your information, pretend to be you, or even hurt others.</p>
+            <p class="text-gray-600 text-xl mb-4">
+              How we are fighting this?
+            <p class="text-red-500 text-xl">The internet should be a safe space for all users. Fake profiles can exploit
+              vulnerabilities, spread malicious content, and engage in cybercrimes. Identifying and addressing them is
+              essential to maintain a secure online environment.</p>
             </p>
           </div>
-          <div class="w-full sm:w-1/2 p-6">
-            <img class="w-full sm:h-64 mx-auto rounded-xl md:w-1/2"
-              src="{%static 'images/privacy.png'%}" alt="" srcset="">
-          </div>
         </div>
-        <div class="flex flex-wrap flex-col-reverse sm:flex-row">
-          <div class="w-full sm:w-1/2 p-6 mt-6">
-            <div class="w-full sm:w-1/2 p-6">
-              <img class="w-full sm:h-64 md:mx-12 rounded-xl md:w-full" src="{%static 'images/safety.png'%}" alt="" srcset="">
-            </div>
-          </div>
-          <div class="w-full sm:w-1/2 p-6 mt-6">
-            <div class="align-middle">
-              <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                  Ensuring Online Safety:
-              </h3>
-              <p class="text-gray-600 text-xl mb-4">
-                How we are fighting this?
-              <p class="text-red-500 text-xl">The internet should be a safe space for all users. Fake profiles can exploit vulnerabilities, spread malicious content, and engage in cybercrimes. Identifying and addressing them is essential to maintain a secure online environment.</p>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="bg-white border-b py-8">
-      <div class="container mx-auto flex flex-wrap pt-4 pb-12">
-        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          Approach
-        </h2>
-        <div class="w-full mb-4">
-          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-        </div>
-        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <div class="w-full font-bold text-2xl text-gray-800 px-6">
-                Data Collection and Preparation:
-                <p class="text-lg font-light mt-5"><b class="font-bold">1.Data Sourcing:</b> Gather a diverse dataset of social media profiles from various platforms, including both genuine and fake profiles.<br><b class="font-bold">2. Feature Extraction:</b>
-                  Extract relevant features from the collected data, encompassing textual, visual, and behavioral attributes.<br><b class="font-bold">3. Data Preprocessing:</b>
-                  Clean and preprocess the data to handle missing values, normalize text, and standardize image sizes.</p>
-              </div>
-            </a>
-          </div>
-          <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            <div class="flex items-center justify-start">
-              <button
-                class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                #1
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <div class="w-full font-bold text-2xl text-gray-800 px-6">
-                Model Development:
-                <p class="text-lg font-light mt-5"><b class="font-bold">1. Machine Learning Models:</b> Employ supervised learning algorithms to build a baseline model for profile authenticity prediction.<br><b class="font-bold">2. Deep Learning Models:</b>
-                  specialized deep neural networks for image and text analysis, leveraging CNNs and RNNs.<br><b class="font-bold">3. Hyperparameter Tuning:</b>
-                  Optimize model hyperparameters for improved performance.</p>
-              </div>
-            </a>
-          </div>
-          <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            <div class="flex items-center justify-center">
-              <button
-                class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                #2
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-  
-              <div class="w-full font-bold text-2xl text-gray-800 px-6">
-                Model Training and Clustering
-                <p class="text-lg font-light mt-5"><b class="font-bold">1. Fake Profile Clustering:</b> Create a separate pipeline to collect and cluster fake social media profiles based on their common characteristics, such as posting behavior, content, and network connections.
-                <br><b class="font-bold">2. Predictive Models for Impersonation:</b>
-                Create models to identify impersonation attempts using clustered fake profiles as training data.<br><b class="font-bold">3. Advanced Monitoring:</b>
-                Implement continuous monitoring of these clustered fake profiles. This approach allows agencies to be proactive in identifying potential threats and impersonation attempts</p>
-              </div>
-            </a>
-          </div>
-          <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            <div class="flex items-center justify-end">
-              <button
-                class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                #3
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    </section>
-
       </div>
     </div>
-  </body>
-</html>
+  </section>
+  <section class="bg-white border-b py-8">
+    <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+      <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        Approach
+      </h2>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <div class="w-full font-bold text-2xl text-gray-800 px-6">
+              Data Collection and Preparation:
+              <p class="text-lg font-light mt-5"><b class="font-bold">1.Data Sourcing:</b> Gather a diverse dataset of
+                social media profiles from various platforms, including both genuine and fake profiles.<br><b
+                  class="font-bold">2. Feature Extraction:</b>
+                Extract relevant features from the collected data, encompassing textual, visual, and behavioral
+                attributes.<br><b class="font-bold">3. Data Preprocessing:</b>
+                Clean and preprocess the data to handle missing values, normalize text, and standardize image sizes.</p>
+            </div>
+          </a>
+        </div>
+        <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div class="flex items-center justify-start">
+            <button
+              class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+              #1
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+            <div class="w-full font-bold text-2xl text-gray-800 px-6">
+              Model Development:
+              <p class="text-lg font-light mt-5"><b class="font-bold">1. Machine Learning Models:</b> Employ supervised
+                learning algorithms to build a baseline model for profile authenticity prediction.<br><b
+                  class="font-bold">2. Deep Learning Models:</b>
+                specialized deep neural networks for image and text analysis, leveraging CNNs and RNNs.<br><b
+                  class="font-bold">3. Hyperparameter Tuning:</b>
+                Optimize model hyperparameters for improved performance.</p>
+            </div>
+          </a>
+        </div>
+        <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div class="flex items-center justify-center">
+            <button
+              class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+              #2
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <a href="#" class="flex flex-wrap no-underline hover:no-underline">
 
+            <div class="w-full font-bold text-2xl text-gray-800 px-6">
+              Model Training and Clustering
+              <p class="text-lg font-light mt-5"><b class="font-bold">1. Fake Profile Clustering:</b> Create a separate
+                pipeline to collect and cluster fake social media profiles based on their common characteristics, such
+                as posting behavior, content, and network connections.
+                <br><b class="font-bold">2. Predictive Models for Impersonation:</b>
+                Create models to identify impersonation attempts using clustered fake profiles as training data.<br><b
+                  class="font-bold">3. Advanced Monitoring:</b>
+                Implement continuous monitoring of these clustered fake profiles. This approach allows agencies to be
+                proactive in identifying potential threats and impersonation attempts
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div class="flex items-center justify-end">
+            <button
+              class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+              #3
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </section>
+
+  </div>
+  </div>
+</body>
+
+</html>
