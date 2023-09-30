@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>Flashy Search Box</title>
+    <title>SocialAuth</title>
     {% comment %} boostrap 4 {% endcomment %}
     <link
       rel="stylesheet"
@@ -172,6 +172,23 @@
         .search-button:hover {
             background: #555; /* Darker background on hover */
         }
+        .popping-text {
+          margin-left:25px;
+          font-size: 20px;
+          animation: pop 0.5s ease-in-out infinite;
+      }
+      
+      @keyframes pop {
+          0% {
+              transform: scale(1);
+          }
+          50% {
+              transform: scale(1.1);
+          }
+          100% {
+              transform: scale(1);
+          }
+      }
     </style>
   </head>
   <body>
@@ -205,6 +222,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-danger popping-text" href="tel:1930">Helpline:1930</a>
             </li>
           </ul>
         </div>
@@ -244,13 +264,13 @@
           </div>
           <div class="w-full sm:w-1/2 p-6">
             <img class="w-full sm:h-64 mx-auto rounded-xl md:w-1/2"
-              src="assets/privacy.png" alt="" srcset="">
+              src="" alt="" srcset="">
           </div>
         </div>
         <div class="flex flex-wrap flex-col-reverse sm:flex-row">
           <div class="w-full sm:w-1/2 p-6 mt-6">
             <div class="w-full sm:w-1/2 p-6">
-              <img class="w-full sm:h-64 md:mx-12 rounded-xl md:w-full" src="assets/safety.png" alt="" srcset="">
+              <img class="w-full sm:h-64 md:mx-12 rounded-xl md:w-full" src="templates/static/safety.png" alt="" srcset="">
             </div>
           </div>
           <div class="w-full sm:w-1/2 p-6 mt-6">
