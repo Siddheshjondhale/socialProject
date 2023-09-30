@@ -242,31 +242,27 @@
       </div>
     </nav>
 
-    <!-- Form with Django integration -->
-    <div class="searchboxdiv">
-        <form method="post" action="{% url 'predict_fake_account' %}" class="search-box">
-            {% csrf_token %}
-            {{ form.text_input.label_tag }}
-            {{ form.text_input }}
-            <button type="submit" class="search-button">Submit</button>
-        </form>
+   <!-- Form with Django integration -->
+<div class="searchboxdiv">
+    <form method="post" action="{% url 'predict_fake_account' %}" class="search-box">
+        {% csrf_token %}
+        {{ form.text_input.label_tag }}
+        {{ form.text_input }}
+        <button type="submit" class="search-button">Submit</button>
+    </form>
 
-
-       
-</div>
-
-      
-   <!-- Display prediction result here -->
-<div id="prediction-result">
-    {% if prediction is not None %}
-        {% if prediction == 0 %}
-            <p>Prediction: Not Fake</p>
-        {% else %}
-            <p>Prediction: Fake</p>
+    <!-- Display prediction result here -->
+    <div id="prediction-result">
+        {% if prediction is not None %}
+            {% if prediction == 0 %}
+                <p>Prediction: Not Fake</p>
+            {% else %}
+                <p>Prediction: Fake</p>
+            {% endif %}
+            <p>Followers: {{ followers }}</p>
+            <p>Following: {{ following }}</p>
         {% endif %}
-        <p>Followers: {{ followers }}</p>
-        <p>Following: {{ following }}</p>
-    {% endif %}
+    </div>
 </div>
 
     <br/>   
