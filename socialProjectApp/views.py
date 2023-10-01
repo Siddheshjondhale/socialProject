@@ -1,4 +1,7 @@
 # Import necessary libraries
+import csv
+from io import TextIOWrapper
+import tempfile
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
@@ -24,33 +27,61 @@ clf.fit(X, y)
 
 # Function to predict fake accounts
 
-def predict_fake_account(request):
-    prediction = None
-    followers_count = None
-    following_count = None
-    accounturl = None  # Initialize accounturl variable
 
+def predict_fake_account(request):
     if request.method == 'POST':
-        form = ProfileSearchForm(request.POST)
+        form = ProfileSearchForm(request.POST, request.FILES)
         if form.is_valid():
             username = form.cleaned_data['text_input']
-            try:
-                ig = instaloader.Instaloader()
-                profile = instaloader.Profile.from_username(ig.context, username)
+            csv_file = form.cleaned_data['csv_file']
 
-                posts_on_website = profile.mediacount
-                followers_count = profile.followers
-                following_count = profile.followees
+            # Check if it's a CSV file
+            if csv_file and not csv_file.name.endswith('.csv'):
+                return HttpResponse('Invalid file format. Please upload a CSV file.')
 
-                user_input = [[posts_on_website, followers_count]]
+            # Initialize a list to store the usernames
+            usernames = []
 
-                prediction = clf.predict(user_input)[0]
-                accounturl = username  # Set accounturl to username
+            # If a CSV file is uploaded, read the usernames from it
+            if csv_file:
+                csv_data = TextIOWrapper(csv_file.file, encoding='utf-8-sig')
+                reader = csv.reader(csv_data)
+                for row in reader:
+                    usernames.append(row[0])  # Assuming the usernames are in the first column
 
-            except Exception as e:
-                return HttpResponse(f'An error occurred: {str(e)}')
+            # If a single username is provided in the text input, add it to the list
+            if username:
+                usernames.append(username)
 
+            # Process the usernames
+            output_data = []
+            for username in usernames:
+                try:
+                    ig = instaloader.Instaloader()
+                    profile = instaloader.Profile.from_username(ig.context, username)
+                    posts_on_website = profile.mediacount
+                    followers_count = profile.followers
+                    following_count = profile.followees
+                    user_input = [[posts_on_website, followers_count]]
+                    prediction = clf.predict(user_input)[0]
+                    output_data.append([username, 'Fake' if prediction == 1 else 'Genuine'])
+                except Exception as e:
+                    output_data.append([username, 'Error: ' + str(e)])
+
+            # Create a temporary CSV file for the results
+            with tempfile.NamedTemporaryFile(delete=False, mode='w', newline='') as temp_file:
+                writer = csv.writer(temp_file)
+                writer.writerow(['Username', 'Status'])
+                writer.writerows(output_data)
+
+            # Generate a response with the CSV file
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename="results.csv"'
+            with open(temp_file.name, 'rb') as tf:
+                response.write(tf.read())
+
+            return response
     else:
         form = ProfileSearchForm()
 
-    return render(request, 'index.html', {'form': form, 'prediction': prediction, 'followers': followers_count, 'following': following_count, 'username': accounturl})
+    return render(request, 'index.html', {'form': form})

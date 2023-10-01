@@ -382,12 +382,14 @@
   <div class="searchboxdiv">
     <div class="half">
 
-      <form method="post" action="{% url 'predict_fake_account' %}" class="search-box">
-        {% csrf_token %}
-        {{ form.text_input.label_tag }}
-        {{ form.text_input }}
-        <button type="submit" class="search-button">Submit</button>
-      </form>
+      <form method="post" action="{% url 'predict_fake_account' %}" class="search-box" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.text_input.label_tag }}
+    {{ form.text_input }}
+    {{ form.csv_file.label_tag }}
+    {{ form.csv_file }}
+    <button type="submit" class="search-button">Submit</button>
+</form>
     </div>
 
     <!-- Display prediction result here -->
