@@ -253,6 +253,63 @@
         transform: scale(1);
       }
     }
+
+
+
+/* CSS for the popup container */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* CSS for the popup content */
+.popup-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+}
+
+/* CSS for the close button */
+{% comment %} .close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+} {% endcomment %}
+
+/* CSS for the popup content */
+.popup-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  max-height: 70%; /* Adjust the maximum height as needed */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+}
+
+/* CSS for the close button */
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
   </style>
 </head>
 
@@ -320,12 +377,31 @@
       {% endif %}
       <p>Followers: {{ followers }}</p>
       <p>Following: {{ following }}</p>
+      <!-- Display Following -->
+      <p>Following:{{ following }}</p>
+        {% if prediction == 1 %}
+    <button id="showPopupButton" class="search-button btn-sm">Show Instructions</button>
+    {% endif %}
+    
       {% endif %}
     </div>
 
   </div>
 
   <br />
+
+
+<div id="popupContainer" class="popup">
+  <div class="popup-content">
+    <span class="close-popup" id="closePopup">&times;</span>
+    <img src="{%static 'images/oneimg.jpg'%}" alt="Image 1">
+    <br>
+    <img src="{%static 'images/twoimg.jpg'%}" alt="Image 2">
+    <!-- Add more images if needed -->
+  </div>
+</div>
+
+
   <!-- Display prediction result here -->
 
 
@@ -465,6 +541,24 @@
 
   </div>
   </div>
+<script>
+  // Get references to the button and popup container
+  const showPopupButton = document.getElementById("showPopupButton");
+  const popupContainer = document.getElementById("popupContainer");
+
+  // Show the popup when the button is clicked
+  showPopupButton.addEventListener("click", function() {
+    popupContainer.style.display = "block";
+  });
+
+  // Hide the popup when the close button is clicked
+  const closePopupButton = document.getElementById("closePopup");
+  closePopupButton.addEventListener("click", function() {
+    popupContainer.style.display = "none";
+  });
+</script>
+
+
 </body>
 
 </html>
