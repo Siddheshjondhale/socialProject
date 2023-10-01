@@ -225,6 +225,10 @@
       cursor: pointer;
     }
 
+    .gradient {
+      background: linear-gradient(90deg, #e46f09 0%, #000000 100%);
+    }
+
     .search-button:hover {
       background: #555;
       /* Darker background on hover */
@@ -267,13 +271,10 @@
             <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="#approach">Approach</a>
           </li>
           <li class="nav-item">
             <a class="nav-link btn btn-danger popping-text" href="tel:1930">Helpline:1930</a>
@@ -296,27 +297,31 @@
     </div>
 
     <!-- Display prediction result here -->
-   <!-- Display prediction result here -->
-<div class="prediction-result" class="half" style="font-size: 24px;">
-   
-    {% if prediction is not None %}
-        {% if prediction == 0 %}
-         The Prediction is that the account
-    <a href="https://www.instagram.com/{{ username }}" target="_blank" style="color:blue;">
-        @{{ username }} 
-    </a> is
-          <b>  <p>Genuine</p> </b>
-        {% else %}
-             The Prediction is that the account
-    <a href="https://www.instagram.com/{{ username }}" target="_blank" style="color:red;">
-        @{{ username }} 
-    </a> is
-    <b><p>Fake</p></b>
-        {% endif %}
-        <p>Followers: {{ followers }}</p>
-        <p>Following: {{ following }}</p>
-    {% endif %}
-</div>
+    <!-- Display prediction result here -->
+    <div class="prediction-result" class="half" style="font-size: 24px;">
+
+      {% if prediction is not None %}
+      {% if prediction == 0 %}
+      The Prediction is that the account
+      <a href="https://www.instagram.com/{{ username }}" target="_blank" style="color:blue;">
+        @{{ username }}
+      </a> is
+      <b>
+        <p>Genuine</p>
+      </b>
+      {% else %}
+      The Prediction is that the account
+      <a href="https://www.instagram.com/{{ username }}" target="_blank" style="color:red;">
+        @{{ username }}
+      </a> is
+      <b>
+        <p>Fake</p>
+      </b>
+      {% endif %}
+      <p>Followers: {{ followers }}</p>
+      <p>Following: {{ following }}</p>
+      {% endif %}
+    </div>
 
   </div>
 
@@ -325,7 +330,7 @@
 
 
   <br /><br /><br />
-  <section class="bg-white border-b py-8">
+  <section class="bg-white border-b py-8" id="about">
     <div class="container max-w-5xl mx-auto m-8">
       <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
         Why SocialAuth?
@@ -373,7 +378,7 @@
       </div>
     </div>
   </section>
-  <section class="bg-white border-b py-8">
+  <section id="approach" class="bg-white border-b py-8">
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
       <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
         Approach
