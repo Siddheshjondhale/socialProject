@@ -16,7 +16,7 @@
     /* styles.css */
 
     .centered-input {
-      width: 90%;
+      width: 60%;
       /* Adjust the width as needed */
       margin: 0 auto;
       /* Center horizontally */
@@ -383,7 +383,7 @@
 
   <!-- Form with Django integration -->
   <div class="searchboxdiv">
-    <div class="half">
+    {% comment %} <div class="half"> {% endcomment %}
 
       <form method="post" action="{% url 'predict_fake_account' %}" class="search-box" enctype="multipart/form-data">
     {% csrf_token %}
@@ -393,7 +393,7 @@
     {{ form.csv_file }}
     <button type="submit" class="search-button">Submit</button>
 </form>
-    </div>
+    {% comment %} </div> {% endcomment %}
 
     <!-- Display prediction result here -->
     <!-- Display prediction result here -->
