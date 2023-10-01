@@ -9,6 +9,6 @@ class ProfileSearchForm(forms.Form):
             'class': 'centered-input',
             'style': 'border: none; outline: none;'  # Remove border and outline
         }),
-        required=False
+        required=False  
     )
-    csv_file = forms.FileField(label='Upload CSV File', required=False)
+    csv_file = forms.FileField(label='', required=False)

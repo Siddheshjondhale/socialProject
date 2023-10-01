@@ -385,7 +385,7 @@
       <form method="post" action="{% url 'predict_fake_account' %}" class="search-box" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.text_input.label_tag }}
-    {{ form.text_input }}
+    {{ form.text_input }}<span class="mr-9 my-4">OR</span>
     {{ form.csv_file.label_tag }}
     {{ form.csv_file }}
     <button type="submit" class="search-button">Submit</button>

@@ -66,7 +66,7 @@ def predict_fake_account(request):
                     prediction = clf.predict(user_input)[0]
                     output_data.append([username, 'Fake' if prediction == 1 else 'Genuine'])
                 except Exception as e:
-                    output_data.append([username, 'Error: ' + str(e)])
+                    output_data.append([username, 'Invalid username'])
 
             # Create a temporary CSV file for the results
             with tempfile.NamedTemporaryFile(delete=False, mode='w', newline='') as temp_file:
