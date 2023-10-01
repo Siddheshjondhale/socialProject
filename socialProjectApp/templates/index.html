@@ -213,7 +213,7 @@
     }
 
     /* CSS for the button */
-    .search-button {
+    {% comment %} .search-button {
       background: #333;
       /* Dark background for the button */
       color: #fff;
@@ -223,7 +223,7 @@
       padding: 10px 20px;
       margin-left: 10px;
       cursor: pointer;
-    }
+    } {% endcomment %}
 
     .gradient {
       background: linear-gradient(90deg, #e46f09 0%, #000000 100%);
@@ -380,7 +380,7 @@
       <!-- Display Following -->
       <p>Following:{{ following }}</p>
         {% if prediction == 1 %}
-    <button id="showPopupButton" class="search-button btn-sm">Show Instructions</button>
+    <button id="showPopupButton" class="btn-danger btn rounded">Show Instructions</button>
     {% endif %}
     
       {% endif %}
