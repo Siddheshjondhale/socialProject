@@ -105,7 +105,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 70vh;
+      min-height: 100vh;
       margin: 0;
       background-color: #f0f0f0;
     }
@@ -350,7 +350,7 @@
   </style>
 </head>
 
-<body>
+<body  id="top">
   <!-- Sticky Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
@@ -362,16 +362,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link  smooth-scroll" href="#top">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link  smooth-scroll" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#approach">Approach</a>
+            <a class="nav-link  smooth-scroll" href="#approach">Approach</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link  smooth-scroll" href="#accuracy">Analysis</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-danger popping-text" href="tel:1930">Helpline:1930</a>
+            <a class="nav-link  smooth-scroll btn btn-danger popping-text" href="tel:1930">Helpline:1930</a>
           </li>
         </ul>
       </div>
@@ -577,7 +580,7 @@
     </div>
   </section>
   </section>
-  <section id="approach" class="bg-white border-b py-8" id="accuracy">
+  <section id="accuracy" class="bg-white border-b py-8" id="accuracy">
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
       <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
         Analysis
@@ -613,6 +616,24 @@
     });
   </script>
 
+<script>
+    // Smooth scroll when clicking on links
+    document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
 
 </body>
 
